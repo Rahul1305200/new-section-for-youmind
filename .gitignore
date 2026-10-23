@@ -1,0 +1,12 @@
+# Local reference and preview files
+serve-preview.cjs
+*.pdf
+YM Clinical Rationale v1.jpeg
+
+# Superseded generated image drafts
+assets/clinical-defensive.png
+assets/clinical-defensive-v2.png
+assets/clinical-receptive.png
+assets/clinical-receptive-v2.png
+assets/clinical-elena-final.png
+assets/clinical-neural-wave.svg

@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Biology of Receptivity | YouMind</title>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/inter-latin-variable.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #0a0a0a;
+      --navy: #031728;
+      --copy: rgba(3, 23, 40, 0.70);
+      --copy-soft: rgba(3, 23, 40, 0.58);
+      --teal: #199a91;
+      --teal-dark: #034447;
+      --teal-deep: #0d313b;
+      --teal-wash: #e7f8f7;
+      --coral: #ce725f;
+      --coral-dark: #7d4338;
+      --coral-wash: #fbefeb;
+      --ice: #ecf7f9;
+      --line: rgba(3, 68, 71, 0.12);
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--navy);
+      background: #fff;
+      font-family: Inter, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    .receptivity {
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0;
+      background: linear-gradient(#fff, #cfeffb 93.305%);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: calc(100% - 64px);
+      max-width: 1280px;
+      margin-inline: auto;
+    }
+
+    .section-head {
+      margin-bottom: 52px;
+    }
+
+    .eyebrow {
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      margin: 0 0 18px;
+      color: var(--teal-dark);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-brand {
+      display: inline-block;
+      color: #147f79;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -.6px;
+      text-transform: none;
+    }
+
+    .eyebrow-brand sup {
+      position: relative;
+      top: -.52em;
+      margin-left: 1px;
+      font-size: 8px;
+      line-height: 0;
+    }
+
+    .eyebrow > span:last-child {
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 52.8px;
+      letter-spacing: -.96px;
+    }
+
+    .lede {
+      max-width: 680px;
+      margin: 20px 0 0;
+      color: var(--copy);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 32px;
+    }
+
+    .lede strong { color: var(--ink); font-weight: 600; }
+
+    .state-stage {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      overflow: hidden;
+      width: 100%;
+      border-radius: 12px;
+      background: #d7ebed;
+    }
+
+    .state-portrait {
+      position: relative;
+      min-width: 0;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .state-portrait > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .state-portrait::after {
+      position: absolute;
+      inset: auto 0 0;
+      height: 44%;
+      content: "";
+      pointer-events: none;
+      background: linear-gradient(transparent, rgba(10,10,10,.68));
+    }
+
+    .portrait-content {
+      position: absolute;
+      z-index: 2;
+      right: 32px;
+      bottom: 30px;
+      left: 32px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-end;
+      justify-content: space-between;
+      color: #fff;
+    }
+
+    .portrait-state {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 33.6px;
+      letter-spacing: -.48px;
+    }
+
+    .portrait-kicker {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin: 7px 0 0;
+      color: rgba(255,255,255,.78);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 19px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .portrait-kicker::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      content: "";
+      background: var(--coral);
+      box-shadow: 0 0 0 5px rgba(206,114,95,.18);
+    }
+
+    .positive .portrait-kicker::before {
+      background: #43d7ca;
+      box-shadow: 0 0 0 5px rgba(67,215,202,.18);
+    }
+
+    blockquote {
+      max-width: 245px;
+      margin: 0;
+      color: rgba(255,255,255,.88);
+      font-size: 14px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 21px;
+      text-align: right;
+    }
+
+    .transition-medallion {
+      position: absolute;
+      z-index: 4;
+      top: 50%;
+      left: 50%;
+      display: grid;
+      place-items: center;
+      width: 104px;
+      height: 104px;
+      padding: 12px;
+      border: 10px solid #b9f4f0;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #199a91, #082725);
+      color: #fff;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 16px 40px rgba(3,68,71,.22);
+      text-align: center;
+    }
+
+    .transition-medallion svg { width: 34px; height: 34px; }
+
+    .state-caption {
+      display: flex;
+      gap: 0;
+      align-items: center;
+      justify-content: center;
+      margin: 24px 0 52px;
+      color: var(--teal-dark);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      text-align: center;
+    }
+
+    .journey {
+      position: relative;
+      display: grid;
+      gap: 16px;
+    }
+
+    .journey-row {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+      min-height: 142px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: rgba(255,255,255,.94);
+    }
+
+    .journey-copy {
+      display: grid;
+      align-content: center;
+      min-width: 0;
+      padding: 28px 36px;
+    }
+
+    .journey-copy.negative {
+      padding-right: 64px;
+      background: linear-gradient(90deg, var(--coral-wash), rgba(255,255,255,0));
+    }
+
+    .journey-copy.positive {
+      padding-left: 64px;
+      background: linear-gradient(270deg, var(--teal-wash), rgba(255,255,255,0));
+    }
+
+    .journey-copy span {
+      margin-bottom: 7px;
+      color: var(--coral-dark);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 18px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .journey-copy.positive span { color: var(--teal-dark); }
+
+    .journey-copy p {
+      max-width: 480px;
+      margin: 0;
+      color: var(--copy);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 25.6px;
+    }
+
+    .journey-copy.positive p { justify-self: start; }
+
+    .journey-node {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(179.85deg, #cafdf9 -22.283%, #fff 99.346%);
+      box-shadow: 0 0 0 8px #fff, 0 12px 30px rgba(3,68,71,.12);
+      transform: translate(-50%, -50%);
+    }
+
+    .journey-node img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .state-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .92fr) minmax(0, 1fr);
+      align-items: stretch;
+      min-height: 88px;
+      margin-top: 24px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .state-summary-side {
+      display: grid;
+      align-content: center;
+      padding: 18px 28px;
+    }
+
+    .state-summary-side.negative {
+      background: linear-gradient(90deg, var(--coral-wash), rgba(255,255,255,0));
+    }
+
+    .state-summary-side.positive {
+      background: linear-gradient(270deg, var(--teal-wash), rgba(255,255,255,0));
+      text-align: right;
+    }
+
+    .state-summary-side strong {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .state-summary-side span {
+      margin-top: 2px;
+      color: var(--copy);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 18px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .state-summary-core {
+      display: grid;
+      place-items: center;
+      padding: 18px 24px;
+      color: var(--teal-dark);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      text-align: center;
+    }
+
+    .takeaway {
+      display: grid;
+      grid-template-columns: minmax(180px, .34fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: center;
+      margin-top: 52px;
+      padding: 36px 40px;
+      border-radius: 12px;
+      background: var(--teal-deep);
+      color: var(--ice);
+    }
+
+    .takeaway h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 33.6px;
+      letter-spacing: -.48px;
+      text-transform: uppercase;
+    }
+
+    .takeaway p {
+      margin: 0;
+      color: rgba(236,247,249,.70);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 25.6px;
+    }
+
+    .takeaway strong { color: #fff; font-weight: 600; }
+
+    .disclaimer {
+      margin: 20px 0 0;
+      color: rgba(3,23,40,.48);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 18px;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1023px) {
+      .receptivity { padding: 80px 0; }
+      .container { width: calc(100% - 48px); }
+      .section-head { margin-bottom: 42px; }
+      .section-title { font-size: 44px; line-height: 49px; letter-spacing: -.88px; }
+      .lede { margin-top: 16px; }
+      .transition-medallion { width: 88px; height: 88px; padding: 10px; border-width: 8px; }
+      .transition-medallion svg { width: 30px; height: 30px; }
+      .portrait-content { right: 22px; bottom: 22px; left: 22px; }
+      .portrait-state { font-size: 20px; line-height: 28px; }
+      .portrait-kicker { font-size: 11px; line-height: 17px; }
+      blockquote { display: none; }
+      .state-caption { margin: 24px 0 40px; }
+      .journey-row { min-height: 154px; }
+      .journey-copy { padding: 24px; }
+      .journey-copy.negative { padding-right: 56px; }
+      .journey-copy.positive { padding-left: 56px; }
+      .journey-copy p { font-size: 16px; line-height: 25.6px; }
+      .state-summary { grid-template-columns: minmax(0, 1fr) minmax(220px, .82fr) minmax(0, 1fr); }
+      .state-summary-side { padding-inline: 20px; }
+      .takeaway { gap: 32px; padding: 32px; }
+    }
+
+    @media (max-width: 767px) {
+      .receptivity { padding: 72px 0; }
+      .container { width: calc(100% - 40px); }
+      .section-head { margin-bottom: 32px; }
+      .eyebrow { flex-wrap: wrap; gap: 8px 10px; margin-bottom: 16px; }
+      .eyebrow-brand { font-size: 20px; line-height: 1; }
+      .section-title { font-size: 32px; line-height: 38px; letter-spacing: 0; }
+      .lede { font-size: 16px; line-height: 26px; }
+      .state-stage { grid-template-columns: 1fr; }
+      .transition-medallion {
+        top: 50%;
+        right: 18px;
+        left: auto;
+        width: 76px;
+        height: 76px;
+        padding: 8px;
+        border-width: 7px;
+        transform: translateY(-50%);
+      }
+      .transition-medallion svg { width: 26px; height: 26px; transform: rotate(90deg); }
+      .portrait-content { right: 20px; bottom: 20px; left: 20px; }
+      .portrait-state { font-size: 21px; line-height: 28px; }
+      .state-caption { margin: 22px 0 32px; font-size: 17px; line-height: 25px; }
+      .journey-row {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+      .journey-node {
+        position: relative;
+        grid-row: 1;
+        top: auto;
+        left: auto;
+        width: 56px;
+        height: 56px;
+        margin-block: 22px 6px;
+        margin-inline: auto;
+        transform: none;
+      }
+      .journey-copy,
+      .journey-copy.negative,
+      .journey-copy.positive {
+        padding: 22px 24px;
+        text-align: center;
+      }
+      .journey-copy.negative { grid-row: 2; background: var(--coral-wash); }
+      .journey-copy.positive { grid-row: 3; background: var(--teal-wash); }
+      .journey-copy.positive p { justify-self: auto; }
+      .state-summary { grid-template-columns: 1fr; margin-top: 16px; }
+      .state-summary-side,
+      .state-summary-side.positive { padding: 16px 24px; text-align: center; }
+      .state-summary-core { grid-row: 2; padding: 14px 24px; }
+      .takeaway { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; padding: 28px 24px; border-radius: 12px; }
+      .takeaway h2 { font-size: 20px; line-height: 28px; }
+    }
+
+    @media (max-width: 479px) {
+      .receptivity { padding: 60px 0; }
+      .container { width: calc(100% - 32px); }
+      .eyebrow { column-gap: 8px; }
+      .eyebrow-brand { font-size: 19px; }
+      .eyebrow > span:last-child { font-size: 11px; letter-spacing: .06em; }
+      .section-title { font-size: 30px; line-height: 36px; }
+      .state-portrait { aspect-ratio: 1 / 1; }
+      .portrait-content { right: 16px; bottom: 16px; left: 16px; }
+      .portrait-state { font-size: 19px; line-height: 26px; }
+      .transition-medallion { right: 14px; width: 68px; height: 68px; border-width: 6px; }
+      .transition-medallion svg { width: 23px; height: 23px; }
+      .journey-copy,
+      .journey-copy.negative,
+      .journey-copy.positive { padding: 20px; }
+      .state-summary-side,
+      .state-summary-side.positive,
+      .state-summary-core { padding-inline: 20px; }
+      .takeaway { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="receptivity" aria-labelledby="receptivity-title">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-brand">YouMind<sup>®</sup></span><span>Biological infrastructure</span></p>
+            <h2 class="section-title" id="receptivity-title">The Biology of Receptivity</h2>
+            <p class="lede">Same patient. Same treatment. <strong>Different physiological readiness.</strong></p>
+          </div>
+        </header>
+
+        <div class="state-stage" aria-label="The same patient shown before and after nervous system regulation">
+          <article class="state-portrait negative">
+            <img src="assets/clinical-marcus-final.png" alt="Marcus in a guarded physiological state before regulation">
+            <div class="portrait-content">
+              <div>
+                <p class="portrait-state">Guarded physiology</p>
+                <p class="portrait-kicker">Before regulation</p>
+              </div>
+              <blockquote>“I want to feel better, but it’s hard to slow down.”</blockquote>
+            </div>
+          </article>
+
+          <article class="state-portrait positive">
+            <img src="assets/clinical-marcus-receptive-final.png" alt="The same patient in a receptive physiological state after regulation">
+            <div class="portrait-content">
+              <div>
+                <p class="portrait-state">Receptive physiology</p>
+                <p class="portrait-kicker">After regulation</p>
+              </div>
+              <blockquote>“I feel more balanced and ready to engage in care.”</blockquote>
+            </div>
+          </article>
+
+          <div class="transition-medallion" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 16h22M20 9l7 7-7 7" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="state-caption">Patient state before care influences treatment receptivity.</p>
+
+        <div class="journey" aria-label="The journey from physiological activation to readiness">
+          <article class="journey-row">
+            <div class="journey-copy negative">
+              <span>Guarded state</span>
+              <p>Sleep-deprived, racing mind, sympathetic nervous system overdrive.</p>
+            </div>
+            <div class="journey-node">
+              <img src="assets/icon-sleep.svg" alt="">
+            </div>
+            <div class="journey-copy positive">
+              <span>Starting state</span>
+              <p>Rested, regulated, and supported by parasympathetic engagement.</p>
+            </div>
+          </article>
+
+          <article class="journey-row">
+            <div class="journey-copy negative">
+              <span>Defensive biology</span>
+              <p>Elevated cortisol and inflammatory signaling reduce physiological flexibility.</p>
+            </div>
+            <div class="journey-node">
+              <img src="assets/icon-regulation.svg" alt="">
+            </div>
+            <div class="journey-copy positive">
+              <span>Biological effect</span>
+              <p>Autonomic balance creates a better recovery environment and prefrontal readiness.</p>
+            </div>
+          </article>
+
+          <article class="journey-row">
+            <div class="journey-copy negative">
+              <span>Treatment friction</span>
+              <p>Intervention is harder to tolerate, engage with, and absorb.</p>
+            </div>
+            <div class="journey-node">
+              <img src="assets/icon-engagement.svg" alt="">
+            </div>
+            <div class="journey-copy positive">
+              <span>Treatment consequence</span>
+              <p>Greater openness, engagement, and capacity to internalize care.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="state-summary" aria-label="Defensive biology to receptive biology">
+          <div class="state-summary-side negative">
+            <strong>Defensive biology</strong>
+            <span>Stress, inflammation, resistance</span>
+          </div>
+          <p class="state-summary-core">Patient state before care influences treatment receptivity.</p>
+          <div class="state-summary-side positive">
+            <strong>Receptive biology</strong>
+            <span>Regulation, recovery, readiness</span>
+          </div>
+        </div>
+
+        <aside class="takeaway" aria-label="Clinical takeaway">
+          <h2>Clinical takeaway</h2>
+          <p>Preparing the nervous system before treatment is not soft wellness; it may improve <strong>tolerance, engagement, and receptivity</strong> across pharmacological and behavioral interventions.</p>
+        </aside>
+
+        <p class="disclaimer">For clinical and investigative discussion only • YouMind 2026</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
