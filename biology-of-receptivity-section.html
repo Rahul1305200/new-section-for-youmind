@@ -367,9 +367,9 @@
       content: "";
       position: absolute;
       top: 50%;
-      width: 30px;
-      height: 30px;
-      background: url("assets/arrow-right-dark.png") center / contain no-repeat;
+      width: 44px;
+      height: 44px;
+      background: url("assets/arrow-right-bold.png") center / contain no-repeat;
       transform: translateY(-50%);
     }
 
@@ -469,6 +469,8 @@
       .journey-copy p { font-size: 16px; line-height: 25.6px; }
       .state-summary { grid-template-columns: minmax(0, 1fr) minmax(220px, .82fr) minmax(0, 1fr); }
       .state-summary-side { padding-inline: 20px; }
+      .state-summary-side.negative { padding-right: 56px; }
+      .state-summary-side.positive { padding-left: 56px; }
       .takeaway { gap: 32px; padding: 32px; }
     }
 
@@ -522,12 +524,12 @@
       .state-summary { grid-template-columns: 1fr; margin-top: 16px; }
       .state-summary-side,
       .state-summary-side.positive { padding: 16px 24px; text-align: center; }
-      .state-summary-side.negative { padding-bottom: 46px; }
+      .state-summary-side.negative { padding-inline: 24px; padding-bottom: 46px; }
       .state-summary-side.positive { padding-top: 46px; }
       .state-summary-side.negative::after,
       .state-summary-side.positive::before { top: auto; left: 50%; right: auto; transform: translateX(-50%) rotate(90deg); }
       .state-summary-side.negative::after,
-      .state-summary-side.positive::before { width: 24px; height: 24px; }
+      .state-summary-side.positive::before { width: 32px; height: 32px; }
       .state-summary-side.negative::after { bottom: 10px; }
       .state-summary-side.positive::before { top: 10px; }
       .state-summary-core { grid-row: 2; padding: 14px 24px; }
