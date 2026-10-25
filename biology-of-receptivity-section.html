@@ -362,19 +362,25 @@
 
     .state-summary-side { position: relative; }
 
+    .state-summary-side.negative { grid-template-columns: auto 1fr; padding-right: 0; }
+    .state-summary-side.positive { grid-template-columns: 1fr auto; padding-left: 0; }
+    .state-summary-side.negative > * { grid-column: 1; }
+    .state-summary-side.positive > * { grid-column: 2; }
+
     .state-summary-side.negative::after,
     .state-summary-side.positive::before {
       content: "";
-      position: absolute;
-      top: 50%;
+      grid-row: 1 / span 2;
+      align-self: center;
+      justify-self: center;
       width: 44px;
       height: 44px;
       background: url("assets/arrow-right-dark.svg") center / contain no-repeat;
-      transform: translateY(-50%);
     }
 
-    .state-summary-side.negative::after { right: 8px; }
-    .state-summary-side.positive::before { left: 8px; }
+    /* offset by the sentence's 24px side padding so the arrow centers in the visible gap */
+    .state-summary-side.negative::after { grid-column: 2; margin-left: 24px; }
+    .state-summary-side.positive::before { grid-column: 1; margin-right: 24px; }
 
     .state-summary-side strong {
       color: var(--ink);
@@ -396,6 +402,7 @@
     }
 
     .state-summary-core {
+      margin: 0;
       display: grid;
       place-items: center;
       padding: 18px 24px;
@@ -469,8 +476,6 @@
       .journey-copy p { font-size: 16px; line-height: 25.6px; }
       .state-summary { grid-template-columns: minmax(0, 1fr) minmax(220px, .82fr) minmax(0, 1fr); }
       .state-summary-side { padding-inline: 20px; }
-      .state-summary-side.negative { padding-right: 56px; }
-      .state-summary-side.positive { padding-left: 56px; }
       .takeaway { gap: 32px; padding: 32px; }
     }
 
@@ -524,15 +529,26 @@
       .state-summary { grid-template-columns: 1fr; margin-top: 16px; }
       .state-summary-side,
       .state-summary-side.positive { padding: 16px 24px; text-align: center; }
-      .state-summary-side.negative { padding-inline: 24px; padding-bottom: 46px; }
-      .state-summary-side.positive { padding-top: 46px; }
+      .state-summary-side.negative,
+      .state-summary-side.positive { grid-template-columns: 1fr; }
+      .state-summary-side.negative > *,
+      .state-summary-side.positive > * { grid-column: 1; }
+      .state-summary-side.negative { padding-inline: 24px; padding-bottom: 30px; }
+      .state-summary-side.positive { padding-top: 30px; }
       .state-summary-side.negative::after,
-      .state-summary-side.positive::before { top: auto; left: 50%; right: auto; transform: translateX(-50%) rotate(90deg); }
-      .state-summary-side.negative::after,
-      .state-summary-side.positive::before { width: 32px; height: 32px; }
-      .state-summary-side.negative::after { bottom: 10px; }
-      .state-summary-side.positive::before { top: 10px; }
-      .state-summary-core { grid-row: 2; padding: 14px 24px; }
+      .state-summary-side.positive::before {
+        position: absolute;
+        grid-column: auto;
+        grid-row: auto;
+        margin: 0;
+        left: 50%;
+        width: 32px;
+        height: 32px;
+        transform: translateX(-50%) rotate(90deg);
+      }
+      .state-summary-side.negative::after { top: auto; bottom: -16px; }
+      .state-summary-side.positive::before { top: -16px; }
+      .state-summary-core { grid-row: 2; padding: 30px 24px; }
       .takeaway { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; padding: 28px 24px; border-radius: 12px; }
       .takeaway h2 { font-size: 20px; line-height: 28px; }
     }
